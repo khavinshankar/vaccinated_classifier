@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import make_pipeline
 
 from preprocesses.preprocess2 import x_train, y_train, x_test, y_test
+from utils import getMetrics
 
 pipe_ord = make_pipeline(
     OrdinalEncoder(), 
@@ -21,4 +22,7 @@ pipe_ord = make_pipeline(
 )
 
 pipe_ord.fit(x_train, y_train)
+y_pred = pipe_ord.predict_proba(x_test)
+
+getMetrics(y_test, y_pred[:,1], "random-forest_1")
 print(f"accuracy = {pipe_ord.score(x_test, y_test):.4f}")

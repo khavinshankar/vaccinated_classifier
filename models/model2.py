@@ -34,7 +34,14 @@ class IsVacinated(nn.Module):
                 acc = self.accuracy(x_test, y_test)
                 print(f"epoch = {epoch}, loss = {loss.item():.4f}, acc = {acc:.4f}")
     
-    def tensorify(self, x, y):
+    def predict(self, x_test):
+        x_test, _ = self.tensorify(x_test)
+        with torch.no_grad():
+            y_pred = self(x_test)
+        
+        return y_pred[:,1]
+    
+    def tensorify(self, x=np.array([]), y=np.array([])):
         x = torch.from_numpy(x.astype(np.float32))
         y = torch.from_numpy(y.astype(np.float32))
         y = y.view(y.shape[0])
