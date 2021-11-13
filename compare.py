@@ -137,7 +137,7 @@ br5 = [x + barWidth for x in br4]
 
 plt.bar(br1, M1P1, width=barWidth, label='Model1 Prep1')
 plt.bar(br2, M1P2, width=barWidth, label='Model1 Prep2')
-plt.bar(br3, M2P1, width=barWidth, label='Model2 Prep2')
+plt.bar(br3, M2P1, width=barWidth, label='Model2 Prep1')
 plt.bar(br4, M2P2, width=barWidth, label='Model2 Prep2')
 plt.bar(br5, RF, width=barWidth, label='Random Forest')
 
